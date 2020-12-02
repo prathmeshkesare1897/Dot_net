@@ -32,81 +32,119 @@ namespace Assignment_1
             Console.ReadLine();
         }
     }
-      class Employee
+    public class Employee
     {
-        private string Name;
-        public string NAME
+        private string EmpName;
+        private int EmpNo;
+        private decimal Basic;
+        private short DeptNo;
+        public static int auto;
+
+        static Employee()
+        {
+            int auto = 0;
+        }
+
+        public Employee()
+        {
+            Console.WriteLine("0 parameter constructor");
+            auto++;
+            this.EmpNo = auto;
+        }
+            
+        public Employee(String EmpName)
+        {
+            auto++;
+            this.EmpNo = auto;
+            this.EmpName = EmpName;
+        }
+
+        public Employee(String EmpName,decimal Basic)
+        {
+            auto++;
+            this.EmpNo = auto;
+            this.EmpName = EmpName;
+            this.Basic = Basic;
+        }
+
+        public Employee(String EmpName, decimal Basic,short DeptNo)
+        {
+            auto++;
+            this.EmpNo = auto;
+            this.EmpName = EmpName;
+            this.Basic = Basic;
+            this.DeptNo = DeptNo;
+        }
+
+        public string Name
         {
             set
             {
-                if (value != null)
-                    Name = value;
+
+                if (value.Length != 0)
+                {
+                    this.EmpName = value;
+                }
                 else
-                    Console.WriteLine("name should not be null");
+                {
+                    Console.WriteLine("name not be null");
+                }
             }
             get
             {
-                return Name;
+                return EmpName;
             }
         }
-
-        private static int Empnoc = 0;
-        private int EmpNo;
-        public int EMPNO
+        public int empNo
         {
             get
             {
                 return EmpNo;
             }
         }
-
-        private decimal Basic;
-        public decimal BASIC
+        public decimal basic
         {
             set
             {
-                if (value > 10000 && value < 10000000)
-                    Basic = value;
+                if (value >= 20000 && value <= 100000)
+                {
+                    this.Basic = value;
+
+                }
                 else
-                    Console.WriteLine("out of range");
+                {
+                    Console.WriteLine("enter basic between 20000 to 35000");
+                }
             }
             get
             {
                 return Basic;
             }
         }
-
-
-        private short deptno;
-        public short DEPTNO
+        public short deptNo
         {
             set
             {
                 if (value > 0)
-                    deptno = value;
+                {
+                    this.DeptNo = value;
+                }
                 else
-                    Console.WriteLine("Invali");
+                {
+                    Console.WriteLine("deptno must be above 0");
+                }
             }
             get
             {
-                return deptno;
+                return DeptNo;
             }
         }
-
-        public decimal GetNetSalary()
+        public decimal getNetSalary()
         {
-            decimal salary;
-            salary = Basic + Basic * 10;
-            return salary;
-        }
-
-        public Employee(string Name=null, decimal Basic=0, short deptno=0)
-        {
-            Empnoc++;
-            EmpNo=Empnoc;
-            this.NAME = Name;
-            this.BASIC = Basic;
-            this.DEPTNO = deptno;
+            decimal ta = 3000;
+            decimal da = 2000;
+            decimal hra = 3000;
+            return this.basic + ta + da + hra;
         }
 
 
@@ -115,4 +153,3 @@ namespace Assignment_1
 
     
 }
-
